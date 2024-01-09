@@ -73,10 +73,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       borderRadius: BorderRadius.circular(8),
                       color: Colors.blue.shade200,
                     ),
-                    child: Text(
+                    child: const Text(
                       'Done',
-                      style:
-                          TextStyle(color: Colors.blue.shade200, fontSize: 15),
+                      style: TextStyle(color: Colors.white, fontSize: 15),
                     ),
                   ),
                 )

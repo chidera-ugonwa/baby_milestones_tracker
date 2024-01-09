@@ -32,11 +32,11 @@ class _HomeState extends State<Home> {
         onTap: _onItemTapped,
         items: const [
           BottomNavigationBarItem(
-              label: "Dashboard", icon: Icon(Icons.home_rounded)),
+              label: '', icon: Icon(Icons.home_rounded, size: 32)),
           BottomNavigationBarItem(
-              label: "Categories", icon: Icon(Icons.category_rounded)),
+              label: '', icon: Icon(Icons.category_rounded, size: 32)),
           BottomNavigationBarItem(
-              label: "Settings", icon: Icon(Icons.settings_rounded)),
+              label: '', icon: Icon(Icons.settings_rounded, size: 32)),
         ],
       ),
       body: pages.elementAt(_selectedIndex),
