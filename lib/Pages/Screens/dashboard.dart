@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:baby_milestones_tracker/Resources/app_assets.dart';
 import 'package:baby_milestones_tracker/Resources/widget_manager.dart';
 
 class Dashboard extends StatefulWidget {
@@ -23,7 +22,7 @@ class _DashboardState extends State<Dashboard> {
             margin: const EdgeInsets.all(8),
             decoration: BoxDecoration(
                 image: const DecorationImage(
-                    image: AssetImage(AppAssets.image), fit: BoxFit.cover),
+                    image: AssetImage('assets/image2.png'), fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(20)),
             child: Stack(
               children: [
@@ -54,7 +53,7 @@ class _DashboardState extends State<Dashboard> {
                       CircleAvatar(
                         maxRadius: 45,
                         child: Image.asset(
-                          AppAssets.mum,
+                          'assets/mum.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -64,7 +63,7 @@ class _DashboardState extends State<Dashboard> {
                       CircleAvatar(
                         maxRadius: 35,
                         child: Image.asset(
-                          AppAssets.child,
+                          'assets/child.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -101,7 +100,7 @@ class _DashboardState extends State<Dashboard> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image.asset(AppAssets.sleep),
+                            Image.asset('assets/baby sleep.png'),
                             Container(
                               margin:
                                   const EdgeInsets.only(bottom: 20, right: 8),
@@ -140,7 +139,7 @@ class _DashboardState extends State<Dashboard> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image.asset(AppAssets.bottle),
+                            Image.asset('assets/baby-bottle.png'),
                             Container(
                               margin:
                                   const EdgeInsets.only(bottom: 20, right: 8),
@@ -204,7 +203,7 @@ class _DashboardState extends State<Dashboard> {
                               Row(
                                 children: [
                                   Image.asset(
-                                    AppAssets.bottle,
+                                    'assets/baby-bottle.png',
                                     scale: 0.8,
                                   ),
                                   const SizedBox(
@@ -260,7 +259,7 @@ class _DashboardState extends State<Dashboard> {
                               Row(
                                 children: [
                                   Image.asset(
-                                    AppAssets.diaper,
+                                    'assets/diaperr.png',
                                     scale: 1.6,
                                   ),
                                   const SizedBox(
@@ -316,7 +315,7 @@ class _DashboardState extends State<Dashboard> {
                               Row(
                                 children: [
                                   Image.asset(
-                                    AppAssets.sleep,
+                                    'assets/baby sleep.png',
                                     scale: 1,
                                   ),
                                   const SizedBox(
