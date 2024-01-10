@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1074101372650",
+    "project_id": "baby-milstones",
+    "storage_bucket": "baby-milstones.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074101372650:android:5066af8516bb1d219f7993",
+        "android_client_info": {
+          "package_name": "com.example.baby_milestones_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMSE4bj0ckVzGmquDojlluYBwDwmX1Mc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
