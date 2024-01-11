@@ -24,9 +24,10 @@ class FirebaseService {
 
   //ADD MILESTONE
   Future addMilestone(
-      String title, String description, String photoLink) async {
+      String title, String description, String photoLink, String date) async {
     final file = <String, String>{
       "title": title,
+      'date': date,
       "desc.": description,
       "photoLink": photoLink
     };

@@ -4,14 +4,24 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 
-class NewMilestone extends StatefulWidget {
-  const NewMilestone({super.key});
+class EditMilestone extends StatefulWidget {
+  const EditMilestone(
+      {super.key,
+      required this.photoUrl,
+      required this.title,
+      required this.desc,
+      required this.date});
+
+  final String photoUrl;
+  final String title;
+  final String desc;
+  final String date;
 
   @override
-  State<NewMilestone> createState() => _NewMilestoneState();
+  State<EditMilestone> createState() => _EditMilestoneState();
 }
 
-class _NewMilestoneState extends State<NewMilestone> {
+class _EditMilestoneState extends State<EditMilestone> {
   final FirebaseService _fService = FirebaseService();
   String filePath = '';
   File file = File('');
@@ -79,7 +89,7 @@ class _NewMilestoneState extends State<NewMilestone> {
   ImageProvider<Object> image() {
     final image = filePath != ''
         ? FileImage(File(filePath))
-        : const AssetImage('assets/background.jpeg');
+        : NetworkImage(widget.photoUrl);
 
     return image as ImageProvider;
   }
@@ -100,7 +110,7 @@ class _NewMilestoneState extends State<NewMilestone> {
         prefixIcon: const Icon(Icons.title),
         prefixIconColor: Colors.blue,
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: 'Milestone Type (E.g: First Steps)',
+        hintText: widget.title,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -122,7 +132,7 @@ class _NewMilestoneState extends State<NewMilestone> {
         prefixIcon: const Icon(Icons.description),
         prefixIconColor: Colors.blue,
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: 'Additional Info',
+        hintText: widget.desc,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -144,7 +154,7 @@ class _NewMilestoneState extends State<NewMilestone> {
         prefixIcon: const Icon(Icons.date_range),
         prefixIconColor: Colors.blue,
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: 'Enter a date',
+        hintText: widget.date,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -189,7 +199,7 @@ class _NewMilestoneState extends State<NewMilestone> {
                 }
               },
               child: const Text(
-                'Create',
+                'Edit',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
@@ -221,7 +231,7 @@ class _NewMilestoneState extends State<NewMilestone> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.blue,
-        title: const Text('New Milestone'),
+        title: const Text('Edit Milestone'),
       ),
       body: SingleChildScrollView(
         child: Padding(
