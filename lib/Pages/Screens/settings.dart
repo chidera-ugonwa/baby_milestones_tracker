@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:baby_milestones_tracker/Authentication/auth.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -8,8 +9,18 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+          child: ElevatedButton(
+              onPressed: () async {
+                Navigator.pop(context);
+                await _auth.signOut();
+              },
+              child: const Text('Logout'))),
+    );
   }
 }

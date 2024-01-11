@@ -313,7 +313,7 @@ class _SignUpState extends State<SignUp> {
                     passwordField,
                     const SizedBox(height: 15),
                     confirmPasswordField,
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 30),
                     signUpButton,
                     const SizedBox(height: 15),
                     Row(

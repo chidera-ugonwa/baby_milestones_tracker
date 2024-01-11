@@ -217,7 +217,7 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                         ]),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 80),
                     signInButton,
                     const SizedBox(height: 15),
                     Row(
@@ -228,12 +228,12 @@ class _SignInState extends State<SignIn> {
                             onTap: () {
                               widget.toggleView();
                             },
-                            child: Text(
+                            child: const Text(
                               '  Sign Up',
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.blue[900],
+                                color: Colors.blue,
                               ),
                             )),
                       ],
