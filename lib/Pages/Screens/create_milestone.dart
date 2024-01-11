@@ -15,6 +15,7 @@ class _NewMilestoneState extends State<NewMilestone> {
   final FirebaseService _fService = FirebaseService();
   String filePath = '';
   File file = File('');
+  String fileName = '';
   String error = '';
   final ImagePicker _picker = ImagePicker();
   bool isLoading = false;
@@ -63,7 +64,10 @@ class _NewMilestoneState extends State<NewMilestone> {
     final pickedFile = await _picker.pickImage(
       source: source,
     );
-    setState(() => file = File(pickedFile!.path));
+    setState(() {
+      file = File(pickedFile!.path);
+      fileName = pickedFile.name;
+    });
     final directory = await getApplicationDocumentsDirectory();
 
     final File profileImage =
@@ -72,10 +76,12 @@ class _NewMilestoneState extends State<NewMilestone> {
   }
 
 //image widget
-  DecorationImage image() {
-    final image = filePath != '' ? FileImage(File(filePath)) : null;
+  ImageProvider<Object> image() {
+    final image = filePath != ''
+        ? FileImage(File(filePath))
+        : const AssetImage('assets/background.jpeg');
 
-    return image as DecorationImage;
+    return image as ImageProvider;
   }
 
   @override
@@ -94,7 +100,7 @@ class _NewMilestoneState extends State<NewMilestone> {
         prefixIcon: const Icon(Icons.title),
         prefixIconColor: Colors.blue,
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: 'Enter Milestone Title',
+        hintText: 'Milestone Type (E.g: First Steps)',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -116,7 +122,7 @@ class _NewMilestoneState extends State<NewMilestone> {
         prefixIcon: const Icon(Icons.description),
         prefixIconColor: Colors.blue,
         contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: 'Describe the milestone',
+        hintText: 'Additional Info',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -148,15 +154,17 @@ class _NewMilestoneState extends State<NewMilestone> {
     //create milestone button
 
     final createMilestoneButton = isLoading
-        ? const CircularProgressIndicator(
-            backgroundColor: Colors.grey,
-            color: Colors.blue,
-            strokeWidth: 5,
+        ? const Center(
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.grey,
+              color: Colors.blue,
+              strokeWidth: 5,
+            ),
           )
         : Material(
             elevation: 5,
             borderRadius: BorderRadius.circular(30),
-            color: Colors.blue[900],
+            color: Colors.blue,
             child: MaterialButton(
               padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
               minWidth: MediaQuery.of(context).size.width,
@@ -165,19 +173,22 @@ class _NewMilestoneState extends State<NewMilestone> {
                   setState(() {
                     isLoading = true;
                   });
-                  String photoUrl = await _fService.uploadFile(file);
+                  String photoUrl = await _fService.uploadFile(file, fileName);
+                  debugPrint(photoUrl);
                   dynamic result = await _fService.addMilestone(
                       titleField.controller!.text,
                       descriptionField.controller!.text,
                       photoUrl);
-                  if (result == null) {
+                  if (result != null) {
                     setState(() =>
                         error = 'Something went wrong...Please try again');
                   }
+                  // ignore: use_build_context_synchronously
+                  Navigator.pop(context);
                 }
               },
               child: const Text(
-                'Sign Up',
+                'Create',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
@@ -190,42 +201,55 @@ class _NewMilestoneState extends State<NewMilestone> {
 
     //add photo button
     final addPhotoButton = Container(
-      width: 40,
-      height: 40,
+      width: 125,
+      height: 125,
       decoration: BoxDecoration(
-        image: image(),
+        image: DecorationImage(fit: BoxFit.cover, image: image()),
       ),
       child: IconButton(
         onPressed: () {
           takePhoto(ImageSource.gallery);
         },
         icon: const Icon(Icons.add),
-        iconSize: 24,
+        iconSize: 32,
       ),
     );
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.blue,
         title: const Text('New Milestone'),
       ),
-      body: Form(
-          key: _formKey,
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                showAlert(),
-                const SizedBox(height: 30),
-                titleField,
-                const SizedBox(height: 30),
-                dateField,
-                const SizedBox(height: 30),
-                descriptionField,
-                const SizedBox(height: 30),
-                addPhotoButton,
-                const SizedBox(height: 30),
-                createMilestoneButton
-              ])),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Form(
+              key: _formKey,
+              child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    showAlert(),
+                    titleField,
+                    const SizedBox(height: 30),
+                    dateField,
+                    const SizedBox(height: 30),
+                    descriptionField,
+                    const SizedBox(height: 10),
+                    const SizedBox(
+                        child: Text(
+                      'Add Image',
+                      style: TextStyle(fontSize: 15),
+                    )),
+                    const SizedBox(height: 10),
+                    addPhotoButton,
+                    const SizedBox(height: 30),
+                    createMilestoneButton
+                  ])),
+        ),
+      ),
     );
   }
 }

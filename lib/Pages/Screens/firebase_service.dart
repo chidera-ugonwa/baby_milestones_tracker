@@ -10,16 +10,16 @@ class FirebaseService {
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
   //UPLOAD FILE
-  Future uploadFile(File file) async {
-    Reference ref = _storage.ref().child('images/');
+  Future<String> uploadFile(File file, String fileName) async {
+    Reference ref = _storage.ref().child(fileName);
     UploadTask uploadTask = ref.putFile(file);
     //wait till the file is uploaded to get the downloadUrl
-    await uploadTask.whenComplete(() {
-      url = ref.getDownloadURL().toString();
+    await uploadTask.whenComplete(() async {
+      url = await ref.getDownloadURL();
     }).catchError((error) {
       return error;
     });
-    return url;
+    return url.toString();
   }
 
   //ADD MILESTONE
@@ -37,6 +37,6 @@ class FirebaseService {
         .collection('milestones')
         .doc(title)
         .set(file)
-        .onError((e, _) => null);
+        .onError((e, _) => e);
   }
 }
