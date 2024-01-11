@@ -77,7 +77,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  // editing controller
+  // editing controllers
   final firstNameEditingController = TextEditingController();
   final lastNameEditingController = TextEditingController();
   final emailEditingController = TextEditingController();

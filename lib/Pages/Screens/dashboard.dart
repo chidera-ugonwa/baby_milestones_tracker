@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Screens/create_milestone.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -14,7 +15,10 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         elevation: 2.0,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const NewMilestone()));
+        },
         child: const Icon(Icons.add),
       ),
       body: Padding(

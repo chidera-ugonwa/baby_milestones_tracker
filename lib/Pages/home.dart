@@ -34,8 +34,6 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               label: '', icon: Icon(Icons.home_rounded, size: 32)),
           BottomNavigationBarItem(
-              label: '', icon: Icon(Icons.category_rounded, size: 32)),
-          BottomNavigationBarItem(
               label: '', icon: Icon(Icons.settings_rounded, size: 32)),
         ],
       ),
