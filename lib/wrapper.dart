@@ -1,3 +1,4 @@
+import 'package:baby_milestones_tracker/Pages/OnBoarding/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,9 +19,12 @@ class _WrapperState extends State<Wrapper> {
     final user = Provider.of<User?>(context);
 
     if (user != null) {
-      return const Home();
-    } else {
+      if (user.emailVerified) {
+        return const Home();
+      }
       return const Authenticate();
+    } else {
+      return const OnBoardingPage();
     }
   }
 }
