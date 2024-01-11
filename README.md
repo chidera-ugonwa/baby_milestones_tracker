@@ -1,6 +1,6 @@
 
 # Baby Milestones Tracker
-tracker app to help you track or record all the important milestones in your baby's life
+Tracker app to help you track or record all the important milestones in your baby's life
 
 
 ## Key Design Decisions and Considerations
