@@ -3,7 +3,7 @@
 tracker app to help you track or record all the important milestones in your baby's life
 
 
-## Key Design Decisions
+## Key Design Decisions and Considerations
 
 Some of the Key design decisions and considerations observed whilst building include;
 
