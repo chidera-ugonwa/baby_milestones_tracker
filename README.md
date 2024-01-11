@@ -1,5 +1,5 @@
 
-# baby_milestones_tracker
+# Baby Milestones Tracker
 tracker app to help you track or record all the important milestones in your baby's life
 
 
