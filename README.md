@@ -22,13 +22,9 @@ Some of the Key design decisions and considerations observed whilst building inc
 4. **Task-Oriented Approach:**
    - Focused on specific tasks that mothers commonly perform and streamline the user flow to complete these tasks efficiently.
    - Provided clear calls-to-action to guide users through the app's functionalities.
-
-5. **Intuitive Gestures and Interactions:**
-   - Implemented common and intuitive gestures for navigation, such as swiping, tapping, and pinching.
-   - Ensured that interactions mimic real-world actions, making the app feel familiar and easy to use.
-
-6. **Comprehensive Help and Support:**
+   
+5. **Comprehensive Help and Support:**
     - Included easily accessible help and support resources, including FAQs, tutorials, and a responsive customer support system.
-    - Considered implementing chatbots or guides to assist users in real-time.
+  
 
 
