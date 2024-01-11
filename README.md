@@ -2,7 +2,6 @@
 # baby_milestones_tracker
 tracker app to help you track or record all the important milestones in your baby's life
 
-A new Flutter project.
 
 ## Key Design Decisions
 
